@@ -5,7 +5,7 @@ buildscript {
         maven {
             url "https://plugins.gradle.org/m2/"
         }
-	}
+    }
 }
 
 plugins {
@@ -13,6 +13,67 @@ plugins {
     id 'org.springframework.boot' version '2.0.3.RELEASE'
 }
 
+ext {
+    springBootVersion = '2.0.3.RELEASE'
+
+    libs = [
+        logging : [
+            'org.slf4j:slf4j-api:1.7.25'
+            , 'org.slf4j:slf4j-simple:1.7.25'
+            , 'org.codehaus.janino:janino:2.7.8'
+            , 'net.logstash.logback:logstash-logback-encoder:5.1'
+            ]
+        , springbootStarter: [
+            'org.springframework.boot:spring-boot-starter-web:' + springBootVersion
+            ]
+        , springboot       : [
+            'org.springframework.boot:spring-boot-starter-actuator:' + springBootVersion,
+            'org.springframework.boot:spring-boot-starter-data-jpa:' + springBootVersion,
+            'org.springframework.boot:spring-boot-starter-websocket:' + springBootVersion
+        ]
+        , guava            : 'com.google.guava:guava:25.1-jre'
+        , commons          : [
+            'org.apache.commons:commons-dbcp2:2.4.0'
+            , 'org.apache.commons:commons-io:1.3.2'
+            , 'org.apache.commons:commons-collections4:4.1'
+            , 'org.apache.commons:commons-lang3:3.7'
+        ]
+    ]
+}
+
+configurations.all {
+    resolutionStrategy.force libs.logging
+    all*.exclude module: 'slf4j-simple'
+}
+
+
 repositories {
     jcenter()
 }
+
+
+allprojects {
+    apply plugin: 'java'
+
+    group 'com.instamanager'
+
+    configurations.all {
+        resolutionStrategy.force libs.logging
+        all*.exclude module: 'slf4j-simple'
+    }
+
+    repositories {
+        jcenter()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+
+    dependencies {
+        compile libs.logging
+
+        testCompile 'org.testng:testng:6.11'
+    }
+
+}
+
