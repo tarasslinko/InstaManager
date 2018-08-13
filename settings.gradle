@@ -1,3 +1,4 @@
 rootProject.name = 'InstaManager'
 
+include 'config-helper'
 include 'im-server'

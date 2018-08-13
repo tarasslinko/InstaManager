@@ -5,6 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static com.config.helper.ConfigHelper.env;
+
+
 @RestController
 @RequestMapping("hello")
 public class HelloController {
@@ -14,7 +17,7 @@ public class HelloController {
     @RequestMapping("")
     public  String hello() {
         logger.info("Hello...");
-        return "hekko azazaz";
+        return env("instagram.clientId");
     }
 
 }
