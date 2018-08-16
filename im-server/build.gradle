@@ -4,4 +4,6 @@ apply plugin: 'org.springframework.boot'
 dependencies {
     compile libs.springbootStarter
     compile libs.httpClient
+    compile libs.commons
+    compile libs.json
 }
