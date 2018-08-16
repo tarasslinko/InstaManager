@@ -6,11 +6,42 @@ instaManagerApp.controller("instaManagerController", function ($scope, $http) {
 
     let loginHelper = new HttpHelper($http, "login");
 
-    loginHelper.get("setBaseUrl?url=" + $scope.host);
+    $scope.logined = false;
+    loginHelper.getDataCallback("logined", function (data) {
+        console.log("Logined: " + data);
+        $scope.logined = data;
+
+        if ($scope.logined) {
+            console.log("load data");
+            $scope.getSelf();
+            $scope.getSelfMedia();
+        }
+    });
 
     $scope.loginUrl = "";
-    loginHelper.getDataCallback("getAuthUrl", function (data) {
-        $scope.loginUrl = data;
+    loginHelper.getDataCallback("setBaseUrl?url=" + $scope.host, function () {
+        loginHelper.getDataCallback("getAuthUrl", function (data) {
+            $scope.loginUrl = data;
+        });
     });
+
+    let mediaHelper = new HttpHelper($http, "media");
+
+    $scope.selfInfo = {};
+    $scope.getSelf = function () {
+        console.log("getSelf");
+        mediaHelper.getDataCallback("getSelf", function (data) {
+            $scope.selfInfo = data;
+        })
+    };
+
+    $scope.selfMedia = {};
+    $scope.getSelfMedia = function () {
+        console.log("getSelfMedia");
+        mediaHelper.getDataCallback("getSelfMedia", function (data) {
+            $scope.selfMedia = data;
+        })
+    };
+
 
 });

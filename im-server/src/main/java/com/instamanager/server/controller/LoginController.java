@@ -40,15 +40,9 @@ public class LoginController {
         return new ModelAndView("redirect:/");
     }
 
-    @RequestMapping(value = "getSelf", produces = "text/plain")
-    public String getSelf() {
-        logger.info("getSelf");
-        return loginService.getSelf();
-    }
-    @RequestMapping(value = "getSelfMedia", produces = "text/plain")
-    public String getSelfMedia() {
-        logger.info("getSelfMedia");
-        return loginService.getSelfMedia();
+    @RequestMapping("logined")
+    public boolean logined(){
+        return loginService.logined();
     }
 
 }

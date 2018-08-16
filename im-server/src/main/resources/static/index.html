@@ -2,19 +2,35 @@
 <html>
     <head>
         <title>insta manager</title>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script type="text/javascript" src="js/angular.min.js"></script>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/http-helper.js"></script>
     </head>
 
     <body ng-app="instaManagerApp">
         <div ng-controller="instaManagerController" class="container-fluid">
-            <div class="row">
-                <span>{{host}}</span>
-            </div>
-            <div class="row">
+            <div class="row" ng-hide="logined">
                 <a href="{{loginUrl}}">Login</a>
+            </div>
+            <div class="row" ng-show="logined">
+                <div class="col-lg-1">
+                    <img ng-src="{{selfInfo.data.profile_picture}}">
+                </div>
+                <div class="col-lg-3">
+                    <span>ID: {{selfInfo.data.id}}</span><br/>
+                    <span>username: {{selfInfo.data.username}}</span><br/>
+                    <span>name: {{selfInfo.data.full_name}}</span><br/>
+                    <span>web: {{selfInfo.data.website}}</span><br/>
+                    <span>media : {{selfInfo.data.counts.media}}</span><br/>
+                    <span>follows : {{selfInfo.data.counts.follows}}</span><br/>
+                    <span>followed_by : {{selfInfo.data.counts.followed_by}}</span><br/>
+                </div>
+            </div>
+            <div class="row" ng-show="logined">
+                <div class="d-inline-block" ng-repeat="pic in selfMedia.data">
+                    <img ng-src="{{pic.images.thumbnail.url}}" title="{{pic.id}}">
+                </div>
             </div>
         </div>
     </body>
