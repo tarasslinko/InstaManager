@@ -28,8 +28,12 @@
                 </div>
             </div>
             <div class="row" ng-show="logined">
-                <div class="d-inline-block" ng-repeat="pic in selfMedia.data">
-                    <img ng-src="{{pic.images.thumbnail.url}}" title="{{pic.id}}">
+                <div class="d-inline-block " ng-repeat="pic in selfMedia.data" >
+                    <div style="max-width: 170px; padding: 10px">
+                        <img ng-src="{{pic.images.thumbnail.url}}" title="{{pic.id}}"><br>
+                        <p class="text-justify">Comment: {{pic.caption.text}}</p>
+                    </div>
+
                 </div>
             </div>
         </div>
