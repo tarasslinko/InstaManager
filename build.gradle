@@ -52,7 +52,7 @@ configurations.all {
 allprojects {
     apply plugin: 'java'
 
-    group 'com.instamanager'
+    group 'org.tarasslinko.instamanager'
 
     configurations.all {
         resolutionStrategy.force libs.logging
@@ -69,7 +69,7 @@ allprojects {
 
     dependencies {
         compile libs.logging
-        
+
         testCompile 'org.testng:testng:6.11'
     }
 
