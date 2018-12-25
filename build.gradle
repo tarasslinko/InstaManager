@@ -66,14 +66,10 @@ allprojects {
         }
     }
 
-    if (project.name == 'config-helper') {
-        return
-    }
 
     dependencies {
         compile libs.logging
-
-        compile project(':config-helper')
+        
         testCompile 'org.testng:testng:6.11'
     }
 

@@ -6,4 +6,5 @@ dependencies {
     compile libs.httpClient
     compile libs.commons
     compile libs.json
+    compile project(':config-helper')
 }
