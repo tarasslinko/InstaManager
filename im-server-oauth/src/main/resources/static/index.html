@@ -28,6 +28,9 @@
                 </div>
             </div>
             <div class="row" ng-show="logined">
+                {{selfFollow}}
+            </div>
+            <div class="row" ng-show="logined">
                 <div class="d-inline-block " ng-repeat="pic in selfMedia.data" >
                     <div style="max-width: 170px; padding: 10px">
                         <img ng-src="{{pic.images.thumbnail.url}}" title="{{pic.id}}"><br>

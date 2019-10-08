@@ -15,6 +15,7 @@ instaManagerApp.controller("instaManagerController", function ($scope, $http) {
             console.log("load data");
             $scope.getSelf();
             $scope.getSelfMedia();
+            $scope.getSelfFollow();
         }
     });
 
@@ -40,6 +41,13 @@ instaManagerApp.controller("instaManagerController", function ($scope, $http) {
         console.log("getSelfMedia");
         mediaHelper.getDataCallback("getSelfMedia", function (data) {
             $scope.selfMedia = data;
+        })
+    };
+    $scope.selfFollow = {};
+    $scope.getSelfFollow = function () {
+        console.log("getSelfFollow");
+        mediaHelper.getDataCallback("getSelfFollow", function (data) {
+            $scope.selfFollow = data;
         })
     };
 

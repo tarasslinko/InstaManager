@@ -18,8 +18,13 @@ public class MediaController {
     public String getSelf() {
         return mediaService.getSelf();
     }
+
     @RequestMapping(value = "getSelfMedia", produces = "text/plain")
     public String getSelfMedia() {
         return mediaService.getSelfMedia();
+    }
+    @RequestMapping(value = "getSelfFollow", produces = "text/plain")
+    public String getSelfFollow() {
+        return mediaService.getSelfFollow();
     }
 }

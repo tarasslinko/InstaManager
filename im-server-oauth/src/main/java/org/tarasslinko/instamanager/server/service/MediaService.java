@@ -28,4 +28,9 @@ public class MediaService {
         logger.info("getSelfMedia");
         return sendGet(BASE_URL + "v1/users/self/media/recent/?access_token=" + loginService.getToken(), HttpHelper::getContent);
     }
+
+    public String getSelfFollow() {
+        logger.info("getSelfMedia");
+        return sendGet(BASE_URL + "v1/users/self/follows/?access_token=" + loginService.getToken(), HttpHelper::getContent);
+    }
 }
