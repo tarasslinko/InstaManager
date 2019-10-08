@@ -1,7 +1,0 @@
-apply plugin: 'java'
-apply plugin: 'org.springframework.boot'
-
-dependencies {
-    compile libs.springbootStarter
-    compile project(':config-helper')
-}
